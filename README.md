@@ -19,7 +19,7 @@ Or access the online demo here: [Live Demo](https://github.com/kpharshitha11-bot
 - 🎨 **Typing Effect** — Animated text to showcase skills  
 - 🌍 **Smooth Scroll** — Fluid navigation between sections  
 - 💻 **Clean Structure** — Modular HTML, CSS, and JS  
--   
+- 📧 **Contact Form** — Integrated with [EmailJS](https://www.emailjs.com/) for instant messaging  
 
 ---
 
