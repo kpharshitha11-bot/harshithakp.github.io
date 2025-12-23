@@ -421,20 +421,6 @@ body::after {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .glow-genz-button {
   background: transparent;
   border: 2px solid var(--accent);
@@ -571,53 +557,6 @@ body::after {
     height: 30px;
     top: -15px;
   }
-
-  .orbit-icon.html {
-    width: 20px;
-    height: 20px;
-  }
-
-  .orbit-icon.css {
-    width: 12px;
-    height: 12px;
-  }
-
-  .orbit-icon.js {
-    width: 16px;
-    height: 16px;
-  }
-
-  .orbit-icon.react {
-    width: 18px;
-    height: 18px;
-  }
-
-  .orbit-icon.nodejs {
-    width: 20px;
-    height: 20px;
-  }
-
-  .orbit-icon.python {
-    width: 22px;
-    height: 22px;
-  }
-
-  .orbit-icon.git {
-    width: 24px;
-    height: 24px;
-  }
-
-  .moon-orbit {
-    width: 60px;
-    height: 60px;
-  }
-
-  .orbit-icon.moon {
-    width: 9px;
-    height: 9px;
-    top: -4.5px;
-  }
-
 
 }
 
@@ -1006,7 +945,9 @@ body::after {
     justify-content: center;
   }
   
-  /* =========================
+ 
+}
+/* =========================
    SOCIAL ICONS (GLOBAL)
 ========================= */
 
@@ -1038,129 +979,57 @@ body::after {
   width: 20px;
   height: 20px;
   color: var(--accent);
+  transform: scale(0.9);
 }
+.social-link.figma svg {
+  transform: scale(0.75);
+}
+
 
 /* hover effect */
 .social-link:hover {
   transform: translateY(-3px) scale(1.08);
   box-shadow: 0 0 18px rgba(255, 56, 56, 0.6);
 }
+/* FIX solar system scaling on mobile */
+@media (max-width: 640px) {
+  .avatar-container {
+    transform: scale(0.75);
+    transform-origin: center;
+  }
+}
+
 /* =========================
-   MOBILE RESPONSIVE FIX
-   ========================= */
+   MOBILE ORBIT FIX (SAFE)
+========================= */
 
 @media (max-width: 768px) {
 
-  /* General */
-  body {
-    overflow-x: hidden;
+  /* scale entire system */
+  .avatar-container {
+    transform: scale(0.7);
+    transform-origin: center;
   }
 
-  .container {
-    padding: 0 16px;
+  /* normalize all orbit icons */
+  .orbit-icon {
+    width: 24px !important;
+    height: 24px !important;
   }
 
-  /* NAVBAR */
-  nav {
-    padding: 14px 18px;
+  .orbit-icon img,
+  .orbit-icon svg {
+    width: 16px;
+    height: 16px;
   }
 
-  .nav-links {
-    display: none; /* hide desktop menu */
-  }
+}
 
-  /* HERO SECTION */
-  .hero {
-    min-height: 100vh;
-    padding-top: 90px;
-    text-align: center;
-  }
-
-  .hero-content {
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-  }
-
-  .hero-text h1 {
-    font-size: 1.9rem;
-    line-height: 1.3;
-  }
-
-  .hero-quote {
-    font-size: 0.95rem;
-    max-width: 100%;
-  }
-
-  /* DOWNLOAD CV BUTTON */
-  .hero-buttons {
-    display: flex;
-    justify-content: center;
-  }
-
-  .glow-genz-button {
-    font-size: 16px;
-    padding: 12px 28px;
-  }
-
-  /* SOCIAL ICONS */
-  .hero-social {
-    justify-content: center;
-    gap: 14px;
-    margin-top: 10px;
-  }
-
-  .social-link {
-    width: 40px;
-    height: 40px;
-  }
-
-  /* AVATAR + ORBITS */
-  .hero-visual {
-    margin-top: 30px;
-  }
+/* extra small phones */
+@media (max-width: 640px) {
 
   .avatar-container {
-    width: 220px;
-    height: 220px;
+    transform: scale(0.6);
   }
-
-  .sun-core img {
-    width: 90px;
-    height: 90px;
-  }
-
-  .orbit-icon {
-    width: 34px;
-    height: 34px;
-  }
-
-  /* ABOUT SECTION */
-  .about-content {
-    grid-template-columns: 1fr;
-    text-align: center;
-    gap: 30px;
-  }
-
-  .about-text p {
-    font-size: 0.95rem;
-  }
-
-  /* PROJECTS */
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 28px;
-  }
-
-  .project-image img {
-    height: 180px;
-  }
-
-  /* FOOTER */
-  footer {
-    text-align: center;
-    font-size: 0.85rem;
-  }
-}
 
 }
