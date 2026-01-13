@@ -1049,6 +1049,7 @@ body::after {
 .mobile-icon.css { top: 50%; right: 0; transform: translate(50%, -50%); }
 .mobile-icon.js { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
 .mobile-icon.figma { top: 50%; left: 0; transform: translate(-50%, -50%); }
+.mobile-icon.react { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
 
 /* Rotation animation */
 @keyframes rotateOrbit {
