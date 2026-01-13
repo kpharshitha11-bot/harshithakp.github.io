@@ -998,37 +998,66 @@ body::after {
     transform-origin: center;
   }
 }
-/* =====================================================
-   📱 MOBILE CLEAN MODE (RECOMMENDED)
-   Hide orbit icons & animations on mobile
-===================================================== */
 
+/* ===========================
+   MOBILE ORBIT
+============================ */
+.mobile-orbit {
+    display: none; /* hidden by default, shown only in mobile */
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 40px auto;
+}
+
+.mobile-sun img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    display: block;
+    margin: auto;
+    z-index: 10;
+    position: relative;
+}
+
+.mobile-orbit-ring {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: rotateOrbit 10s linear infinite;
+}
+
+.mobile-icon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.mobile-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Position mobile icons evenly around circle */
+.mobile-icon.html { top: 0; left: 50%; transform: translate(-50%, -50%); }
+.mobile-icon.css { top: 50%; right: 0; transform: translate(50%, -50%); }
+.mobile-icon.js { bottom: 0; left: 50%; transform: translate(-50%, 50%); }
+.mobile-icon.figma { top: 50%; left: 0; transform: translate(-50%, -50%); }
+
+/* Rotation animation */
+@keyframes rotateOrbit {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Show mobile orbit only on small screens, hide desktop orbit */
 @media (max-width: 768px) {
-
-  /* Hide all orbit icons */
-  .orbit-icon,
-  .moon-orbit,
-  .earth-container {
-    display: none !important;
-  }
-
-  /* Keep girl profile centered & clean */
-  .avatar-container {
-    transform: none !important;
-  }
-
-  .sun-core {
-    width: 90px;
-    height: 90px;
-    transform: translate(-50%, -50%) !important;
-  }
+    .avatar-container { display: none; }  /* hide desktop orbit */
+    .mobile-orbit { display: block; }    /* show mobile orbit */
 }
-
-@media (max-width: 480px) {
-
-  .sun-core {
-    width: 75px;
-    height: 75px;
-  }
-}
-
