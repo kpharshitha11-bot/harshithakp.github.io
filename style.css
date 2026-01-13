@@ -998,7 +998,6 @@ body::after {
     transform-origin: center;
   }
 }
-
 /* =====================================================
    📱 MOBILE ORBIT ICON NORMALIZATION (SAFE)
    Desktop remains untouched
@@ -1047,4 +1046,50 @@ body::after {
     height: 15px !important;
   }
 }
+/* =====================================================
+   ✅ FINAL MOBILE ORBIT FIX (OVERRIDES ALL)
+   MUST BE LAST IN FILE
+===================================================== */
+
+@media (max-width: 768px) {
+
+  /* FORCE SAME SIZE FOR ALL ORBIT ICONS */
+  .avatar-container .orbit-icon {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  /* FIX SVG / IMAGE SCALING */
+  .avatar-container .orbit-icon img,
+  .avatar-container .orbit-icon svg {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+  }
+
+  /* FIGMA ORBIT ICON – SPECIAL FIX */
+  .avatar-container .orbit-icon.figma {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  /* CENTER GIRL PROFILE PERFECTLY */
+  .avatar-container .sun-core {
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .avatar-container .orbit-icon {
+    width: 16px !important;
+    height: 16px !important;
+  }
+
+  .avatar-container .orbit-icon.figma {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+
 
