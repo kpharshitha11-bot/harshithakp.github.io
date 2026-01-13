@@ -294,71 +294,85 @@ body::after {
   position: relative;
   width: 500px;
   height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: 0 auto;
 }
 
-/* Matahari (Sun) - Elemento visual */
 .sun-core {
-  width: 168px; /* 40% larger than 120px */
-  height: 168px; /* 40% larger than 120px */
-  border-radius: 50%;
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 120px;
+  height: 120px;
   transform: translate(-50%, -50%);
-  border: 4px solid #FFD700;
-  box-shadow:
-    0 0 40px rgba(255, 215, 0, 0.8),
-    0 0 80px rgba(255, 215, 0, 0.5),
-    0 0 120px rgba(255, 215, 0, 0.3),
-    inset 0 0 30px rgba(255, 215, 0, 0.4);
-  animation: sunGlow 3s ease-in-out infinite alternate;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  overflow: hidden;
+  z-index: 100;
 }
+
 
 .sun-core img {
   width: 100%;
   height: 100%;
-  border-radius: 50%;
   object-fit: cover;
+  display: block;
 }
 
-.sun-core:hover {
-  transform: translate(-50%, -50%) scale(1.1);
-}
 
-/* Orbit Icon Buttons */
-.orbit-icon {
+.orbit-ring {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 48px;
-  height: 48px;
+  width: 450px; /* distance of orbit */
+  height: 450px;
   border-radius: 50%;
-  font-size: 10px;
-  font-weight: bold;
-  color: var(--text);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  transform-origin: 0 0;
+  border: 1px dashed rgba(255,255,255,0.2);
+  transform: translate(-50%, -50%);
 }
 
-.orbit-icon img {
+.orbit-icons {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+}    
+
+.orbit-item {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  transform-origin: 0 0;
+  animation: orbitRotate 10s linear infinite;
+}
+
+@keyframes orbitRotate {
+  from {
+    transform: rotate(0deg) translateX(250px) rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg) translateX(250px) rotate(-360deg);
+  }
+}
+
+
+.orbit-item img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  object-fit: cover;
 }
 
-.orbit-icon:hover {
-  background: rgba(255, 56, 56, 0.4);
-  transform: scale(1.2);
-  box-shadow: 0 0 10px rgba(255, 56, 56, 0.5);
-}
+/* Spread items evenly by animation-delay */
+.orbit-item:nth-child(1) { animation-delay: 0s; }
+.orbit-item:nth-child(2) { animation-delay: 1.25s; }
+.orbit-item:nth-child(3) { animation-delay: 2.5s; }
+.orbit-item:nth-child(4) { animation-delay: 3.75s; }
+.orbit-item:nth-child(5) { animation-delay: 5s; }
+.orbit-item:nth-child(6) { animation-delay: 6.25s; }
+.orbit-item:nth-child(7) { animation-delay: 7.5s; }
+.orbit-item:nth-child(8) { animation-delay: 8.75s; }
+.orbit-item:nth-child(9) { animation-delay: 10s; }
+
+
+
+
 
 @keyframes sunGlow {
   0% {
@@ -402,24 +416,7 @@ body::after {
   }
 }
 
-/* Orbit rotation animations */
-@keyframes rotate {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
 
-@keyframes counterRotate {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(-360deg);
-  }
-}
 
 .glow-genz-button {
   background: transparent;
@@ -607,52 +604,7 @@ body::after {
     top: -12px;
   }
 
-  .orbit-icon.html {
-    width: 16px;
-    height: 16px;
-  }
-
-  .orbit-icon.css {
-    width: 10px;
-    height: 10px;
-  }
-
-  .orbit-icon.js {
-    width: 12px;
-    height: 12px;
-  }
-
-  .orbit-icon.react {
-    width: 14px;
-    height: 14px;
-  }
-
-  .orbit-icon.nodejs {
-    width: 16px;
-    height: 16px;
-  }
-
-  .orbit-icon.python {
-    width: 18px;
-    height: 18px;
-  }
-
-  .orbit-icon.git {
-    width: 20px;
-    height: 20px;
-  }
-
-  .moon-orbit {
-    width: 40px;
-    height: 40px;
-  }
-
-  .orbit-icon.moon {
-    width: 7px;
-    height: 7px;
-    top: -3.5px;
-  }
-
+  
   .nav-container {
     padding: 12px 15px;
   }
@@ -991,13 +943,7 @@ body::after {
   transform: translateY(-3px) scale(1.08);
   box-shadow: 0 0 18px rgba(255, 56, 56, 0.6);
 }
-/* FIX solar system scaling on mobile */
-@media (max-width: 640px) {
-  .avatar-container {
-    transform: scale(0.75);
-    transform-origin: center;
-  }
-}
+
 
 /* ===========================
    MOBILE ORBIT
@@ -1015,9 +961,11 @@ body::after {
     height: 120px;
     border-radius: 50%;
     display: block;
-    margin: auto;
-    z-index: 10;
-    position: relative;
+    position: absolute; /* position it inside the parent */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* perfect centering */
+    z-index: 10; /* above the orbit ring */
 }
 
 .mobile-orbit-ring {
@@ -1029,6 +977,7 @@ body::after {
     transform: translate(-50%, -50%);
     border-radius: 50%;
     animation: rotateOrbit 10s linear infinite;
+    border: 2px dashed #aaa; 
 }
 
 .mobile-icon {
