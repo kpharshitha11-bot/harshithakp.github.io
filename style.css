@@ -301,11 +301,37 @@ body::after {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 120px;
-  height: 120px;
+  width: 300px;
+  height: 300px;
   transform: translate(-50%, -50%);
-  z-index: 100;
+  z-index: 500;
 }
+.sun-mask {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 99;
+  pointer-events: none;
+
+  /* THIS blurs content behind */
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  /* feathered fade */
+  background: radial-gradient(
+    circle,
+    rgba(87, 0, 0, 0.95) 50%,
+    rgba(87, 0, 0, 0.7) 65%,
+    rgba(87, 0, 0, 0.3) 80%,
+    rgba(87, 0, 0, 0) 100%
+  );
+}
+
+
 
 
 .sun-core img {
@@ -316,14 +342,15 @@ body::after {
 }
 
 
+
 .orbit-ring {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 450px; /* distance of orbit */
-  height: 450px;
+  width: 500px; /* distance of orbit */
+  height: 500px;
   border-radius: 50%;
-  border: 1px dashed rgba(255,255,255,0.2);
+  border: 2px dashed rgba(73, 12, 12, 0.705);
   transform: translate(-50%, -50%);
 }
 
@@ -369,7 +396,6 @@ body::after {
 .orbit-item:nth-child(7) { animation-delay: 7.5s; }
 .orbit-item:nth-child(8) { animation-delay: 8.75s; }
 .orbit-item:nth-child(9) { animation-delay: 10s; }
-
 
 
 
@@ -490,8 +516,23 @@ body::after {
     font-size: 3rem;
   }
 
-
 }
+
+@keyframes popFromCenter {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+  }
+  70% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
+
 
 @media (max-width: 768px) {
   .nav-menu {
@@ -543,8 +584,8 @@ body::after {
   }
 
   .sun-core {
-    width: 80px;
-    height: 80px;
+    width: 1200px;
+    height: 200px;
   }
 
 
